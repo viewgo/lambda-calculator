@@ -1,9 +1,27 @@
 import React from "react";
 
-const NumberButton = () => {
+const NumberButton = (props) => {
+
+  if(props.number != 0){
   return (
     <>
-      {/* Display a button element rendering the data being passed down from the parent container on props */}
+     {console.log(props.number)}
+      <button>
+        {props.number}
+      </button>
     </>
   );
+  }
+  else if(props.number == 0){
+    return (
+      <>
+       {console.log(props.number)}
+        <button className="zero">
+          {props.number}
+        </button>
+      </>
+    );
+  }
 };
+
+export default NumberButton;
