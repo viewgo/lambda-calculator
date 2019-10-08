@@ -16,7 +16,40 @@ function App() {
   // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
-  const [calc, setCalc] = useState(0);
+  const [calc, setCalc] = useState("");
+
+  const onClick = button => {
+    if (button === "=") {
+      calculate();
+    } else if (button === "+/-") {
+      if (calc.charAt(0) === "-") {
+        setCalc(calc.substr(1));
+      } else {
+        setCalc("-" + calc);
+      }
+    } else if (button === "C") {
+      reset();
+    } else if (button === "%") {
+    } else {
+      setCalc(calc + button);
+    }
+  };
+
+  const calculate = () => {
+    let checkResult = "";
+    checkResult = calc;
+    checkResult = checkResult.replace("--", "+");
+
+    try {
+      setCalc(eval(checkResult) || "0");
+    } catch (e) {
+      setCalc("error");
+    }
+  };
+
+  const reset = () => {
+    setCalc("");
+  };
 
   return (
     <div className="container">
@@ -28,14 +61,14 @@ function App() {
         <div className="buttons-container">
           <div className="specsnums">
             <div className="specs">
-              <Specials />
+              <Specials onClick={onClick} />
             </div>
             <div className="nums">
-              <Numbers />
+              <Numbers onClick={onClick} />
             </div>
           </div>
           <div className="ops">
-            <Operators />
+            <Operators onClick={onClick} />
           </div>
 
           {/* <Specials clickHandler={clickHandler} />
@@ -46,5 +79,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

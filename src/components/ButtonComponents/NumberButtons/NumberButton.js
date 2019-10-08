@@ -2,21 +2,20 @@ import React from "react";
 
 const NumberButton = (props) => {
 
-  if(props.number != 0){
+
+  if(props.number !== "0"){
   return (
     <>
-     {console.log(props.number)}
-      <button>
+     <button name={props.number} onClick={e => props.onClick(e.target.name)}>
         {props.number}
       </button>
     </>
   );
   }
-  else if(props.number == 0){
+  else if(props.number === "0"){
     return (
       <>
-       {console.log(props.number)}
-        <button className="zero">
+       <button name={props.number} onClick={e => props.onClick(e.target.name)} className = "zero">
           {props.number}
         </button>
       </>
