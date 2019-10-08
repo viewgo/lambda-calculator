@@ -26,9 +26,9 @@
   box-shadow: 1px 1px #322c2d;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
   padding-right: 8%;
-  font-size: 5rem;
+  font-size: 4.5rem;
 }
 
 .buttons-container {
