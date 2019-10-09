@@ -13,6 +13,7 @@ function App() {
 
   const onClick = button => {
     
+    //NOT WORKING
     if (calc === "error") {
       console.log("error before click");      
       setCalc("");
